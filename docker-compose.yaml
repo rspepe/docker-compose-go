@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  go:
+    build:
+      context: ./go
+    environment:
+      # - MODE=release
+      - GITHUB_ORGANIZATION=rspepe
+      - GITHUB_REPOSITORY=docker-compose-go
+    volumes:
+      - "./go/src/:/src:delegated"
