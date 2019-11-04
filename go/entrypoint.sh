@@ -14,8 +14,10 @@ echo "GITHUB_ORGANIZATION: ${GITHUB_ORGANIZATION}."
 echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}."
 echo "SOURCE_PATH: ${SOURCE_PATH}."
 
-mkdir -p "/go/src/github.com/${GITHUB_ORGANIZATION}"
-ln -s /src $SOURCE_PATH
+if [ ! -d "$SOURCE_PATH" ]; then
+  mkdir -p "/go/src/github.com/${GITHUB_ORGANIZATION}"
+  ln -s /src $SOURCE_PATH
+fi
 
 if [ "$MODE" != "release" ]
 then
