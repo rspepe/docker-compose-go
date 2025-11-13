@@ -1,8 +1,9 @@
-FROM golang:1.13
+FROM golang:1.23
 
 LABEL  maintainer "rspepe <rspepeg@gmail.com>"
 
-RUN GO111MODULE=off go get github.com/codegangsta/gin
+# air をインストール（ホットリロード用）
+RUN go install github.com/cosmtrek/air@latest
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
